@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
-BLOG_POSTS_ENDPOINT =  "https://api.npoint.io/33005ada6dbbdb807cd1"
+BLOG_POSTS_ENDPOINT="https://api.npoint.io/f9cdde98f31756d428b6"
 
 app = Flask(__name__)
 
@@ -16,9 +16,16 @@ def home():
 def dis_about():
     return render_template("about.html")
 
-@app.route('/contact')
+@app.route('/contact', methods=["GET", "POST"])
 def dis_contact():
-    return render_template("contact.html")
+    if request.method == 'POST':
+        print(request.form["name"])
+        print(request.form["email"])
+        print(request.form["phone"])
+        print(request.form["message"])
+        return render_template("contact.html", msg_sent=True)
+    else:
+        return render_template("contact.html",msg_sent=False)
 
 @app.route('/post<id>')
 def get_post(id):
