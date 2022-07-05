@@ -1,0 +1,79 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}
+
+{% block title %}Add A New Cafe{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+		<h1>Add a new cafe into the database</h1>
+		{{ wtf.quick_form(form, novalidate=True) }}
+
+      <!-- This is where your WTForm will go -->
+<!--      <form action="{{ url_for('home') }}" method="post" novalidate>-->
+<!--		{{ form.csrf_token }}-->
+<!--		<p>-->
+<!--			{{ form.cafe.label }} <br>-->
+<!--			{{ form.cafe(size=80) }}-->
+<!--			{% for err in form.cafe.errors %}-->
+<!--			<span style="color:red">{{ err }}</span>-->
+<!--			{% endfor %}-->
+<!--		</p>-->
+<!--		<p>-->
+<!--			{{ form.location.label }}<br>-->
+<!--			{{ form.location(size=80)}}-->
+<!--			{% for err in form.location.errors %}-->
+<!--			<span style="color:red">{{ err }}</span>-->
+<!--			{% endfor %}-->
+<!--		</p>-->
+<!--	    <p>-->
+<!--			{{ form.open.label }}<br>-->
+<!--			{{ form.open(size=80)}}-->
+<!--			{% for err in form.open.errors %}-->
+<!--			<span style="color:red">{{ err }}</span>-->
+<!--			{% endfor %}-->
+<!--		</p>-->
+<!--	    <p>-->
+<!--			{{ form.close.label }}<br>-->
+<!--			{{ form.close(size=80)}}-->
+<!--			{% for err in form.close.errors %}-->
+<!--			<span style="color:red">{{ err }}</span>-->
+<!--			{% endfor %}-->
+<!--		</p>-->
+<!--	    <p>-->
+<!--			{{ form.coffee_rate.label }}<br>-->
+<!--			{{ form.coffee_rate}}-->
+<!--			{% for err in form.coffee_rate.errors %}-->
+<!--			<span style="color:red">{{ err }}</span>-->
+<!--			{% endfor %}-->
+<!--		</p>-->
+<!--		  <p>-->
+<!--			{{ form.wifi.label }}<br>-->
+<!--			{{ form.wifi}}-->
+<!--			{% for err in form.wifi.errors %}-->
+<!--			<span style="color:red">{{ err }}</span>-->
+<!--			{% endfor %}-->
+<!--		</p>-->
+<!--		  <p>-->
+<!--			{{ form.ps_avail.label }}<br>-->
+<!--			{{ form.ps_avail}}-->
+<!--			{% for err in form.ps_avail.errors %}-->
+<!--			<span style="color:red">{{ err }}</span>-->
+<!--			{% endfor %}-->
+<!--		</p>-->
+<!--		{{form.submit}}-->
+	</form>
+	  <p class="space-above"><a href="{{ url_for('cafes')}}">See all cafes</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
