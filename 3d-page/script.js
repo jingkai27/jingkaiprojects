@@ -10,8 +10,8 @@ function init() {
     console.log("hello world");
 
     // Create camera
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 5;
+    camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 50, -90);
     console.log("camera created")
 
 
@@ -35,8 +35,10 @@ function init() {
     console.log("AmbientLight added to scene");
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // White directional light
-    directionalLight.position.set(5, 10, 7.5); // Position the light
+    directionalLight.position.set(0, 10, 10); // Position the light behind the camera to shine on the front
+    directionalLight.target.position.set(0, 0, 0); // Point the light towards the center of the scene
     scene.add(directionalLight);
+    scene.add(directionalLight.target);
     console.log("DirectionalLight added to scene");
 
     // Add orbit controls
@@ -69,7 +71,6 @@ function onWindowResize() {
 function animate() {
     requestAnimationFrame(animate);
     if (model) {
-        model.rotation.y += 0.001; // Rotate model
     }
     controls.update(); // Update controls
     renderer.render(scene, camera);
