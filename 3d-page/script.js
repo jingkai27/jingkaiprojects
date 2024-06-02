@@ -30,13 +30,13 @@ function init() {
     console.log("Cube added to scene");
 
     // Add lighting
-    const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
+    const ambientLight = new THREE.AmbientLight(0x404040,1.2); // Soft white light
     scene.add(ambientLight);
     console.log("AmbientLight added to scene");
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // White directional light
-    directionalLight.position.set(0, 10, 10); // Position the light behind the camera to shine on the front
-    directionalLight.target.position.set(0, 0, 0); // Point the light towards the center of the scene
+    const directionalLight = new THREE.DirectionalLight(0xFEFFD2, 2); // White directional light
+    directionalLight.position.set(0, 20, 12); // Position the light behind the camera to shine on the front
+    directionalLight.target.position.set(0, 10, 0); // Point the light towards the center of the scene
     scene.add(directionalLight);
     scene.add(directionalLight.target);
     console.log("DirectionalLight added to scene");
